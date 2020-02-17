@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Lambda Student Finishes Components I Project',
+    date: 'February 12, 2020',
+    firstParagraph: `A student named Bryan Bilek finished their Lambda project on components. A student named Bryan Bilek finished their Lambda project on components. A student named Bryan Bilek finished their Lambda project on components. A student named Bryan Bilek finished their Lambda project on components.`,
+
+    secondParagraph: `This is actually part of that finished assignment. This is actually part of that finished assignment. This is actually part of that finished assignment. This is actually part of that finished assignment. This is actually part of that finished assignment. This is actually part of that finished assignment. This is actually part of that finished assignment.`,
+
+    thirdParagraph: `Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now! Have a nice day now!`
   }
 ];
 
@@ -112,3 +121,43 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+//step 1
+function createNewsfeed(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articlePara1 = document.createElement('p');
+  const articlePara2 = document.createElement('p');
+  const articlePara3 = document.createElement('p');
+  const expandBtn = document.createElement('span');
+
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expandBtn.classList.add('expandButton');
+
+  article.append(articleTitle, articleDate, articlePara1, articlePara2, articlePara3, expandBtn);
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articlePara1.textContent = firstParagraph;
+  articlePara2.textContent = secondParagraph;
+  articlePara3.textContent = thirdParagraph;
+  expandBtn.textContent = 'expand';
+  //step2
+  expandBtn.addEventListener('click', event => {
+    article.classList.toggle('article-open');
+  });
+
+  //step 3
+  return article;
+};
+
+//step 4
+const articles = document.querySelector('.articles');
+data.map(d => {
+  articles.append(createNewsfeed(d.title, d.date, d.firstParagraph, d.secondParagraph, d.thirdParagraph));
+});
+
+//step 5
+//***refer to the data array for added article***
